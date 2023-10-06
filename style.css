@@ -14,7 +14,7 @@ main {
   display: flex;
   flex-direction: column;
   font-family: Quicksand, sans-serif;
-  font-size: 32px;
+  font-size: clamp(16px, 16px + 2vw, 32px);
   line-height: 1.4;
   margin: 0;
   max-height: 100vh;
@@ -28,8 +28,8 @@ section {
   flex: 0 0 auto;
   flex-direction: column;
   height: 100vh;
-  gap: 2rem;
-  padding: 4rem;
+  gap: clamp(1rem, 3vw, 2rem);
+  padding: clamp(1rem, 1rem + 5vw, 4rem);
   overflow-x: hidden;
   position: relative;
   scroll-snap-align: start;
@@ -45,11 +45,11 @@ h1, h2, h3 {
 }
 
 h1 {
-  font-size: 7rem;
+  font-size: clamp(2rem, 10vw, 7rem);
 }
 
 h2 {
-  font-size: 4rem;
+  font-size: clamp(2rem, 10vw, 4rem);
 }
 
 ul, ol, dl, p {
@@ -58,6 +58,8 @@ ul, ol, dl, p {
 
 a {
   color: blue;
+  text-decoration: underline;
+  text-underline-offset: 2px;
 }
 
 a[data-next] {
@@ -78,25 +80,27 @@ figure {
   margin: 0;
 }
 
-figcaption {
-  font-style: italic;
-  margin-top: 1em;
-}
-
 img, svg {
-  height: 100%;
   object-fit: contain;
+  max-width: 100%;
   vertical-align: middle;
 }
 
-img {
-  max-width: 100vh;
+@media (min-width: 768px) {
+  img {
+    height: 100%;
+  }
 }
 
 .procon {
   display: grid;
   gap: 2rem;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+@media (min-width: 768px) {
+  .procon {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 .procon hr {
@@ -143,9 +147,11 @@ img {
   font-size: 0.9em;
 }
 
-.sashet {
-  display: grid;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
+@media (min-width: 768px) {
+  .sashet {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
 }
 
 .sashet dl {
